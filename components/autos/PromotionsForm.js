@@ -300,24 +300,31 @@ const FormComponent = ({ promotion, url }) => {
             Tambien nos puedes enviar un whatsapp
           </Typography> */}
 
-            <Divider style={{ marginBottom: 20 }}>ó</Divider>
+           {
+              promotion?.store?.dpxPhone &&
+             (
+              <>
+                <Divider style={{ marginBottom: 20 }}>ó</Divider>
 
-            <Button
-              startIcon={<WhatsAppIcon />}
-              variant="contained"
-              style={{ backgroundColor: "#4BC558" }}
-              fullWidth
-              href={`https://wa.me/${promotion.store.dpxPhone}?text=${parseMessage}`}
-              target="_blank"
-              onClick={() =>
-                sendEventGa4("generate_lead", {
-                  event_category: "click",
-                  event_label: "Click Whatsapp Button",
-                })
-              }
-            >
-              Chat on WhatsApp
-            </Button>
+                <Button
+                  startIcon={<WhatsAppIcon />}
+                  variant="contained"
+                  style={{ backgroundColor: "#4BC558" }}
+                  fullWidth
+                  href={`https://wa.me/${promotion.store.dpxPhone}?text=${parseMessage}`}
+                  target="_blank"
+                  onClick={() =>
+                    sendEventGa4("generate_lead", {
+                      event_category: "click",
+                      event_label: "Click Whatsapp Button",
+                    })
+                  }
+                >
+                  Chat on WhatsApp
+                </Button>
+              </>
+            )
+           }
           </form>
           <Typography variant="body2" gutterBottom mt={2} mb={5}>
             * Nunca compartiremos tus datos con nadie más.
